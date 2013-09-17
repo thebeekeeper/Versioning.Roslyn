@@ -26,8 +26,8 @@ namespace Run00.Versioning
 			switch (changes.Changes.ChangeType)
 			{
 				case ContractChangeType.None:
-					suggested = new Version(originalVersion.Major, originalVersion.Minor, originalVersion.Build, originalVersion.Revision);
-					break;
+					//suggested = new Version(originalVersion.Major, originalVersion.Minor, originalVersion.Build, originalVersion.Revision);
+					//break;
 				case ContractChangeType.Cosmetic:
 					suggested = new Version(originalVersion.Major, originalVersion.Minor, originalVersion.Build, originalVersion.Revision + 1);
 					break;
