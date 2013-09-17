@@ -111,6 +111,8 @@ namespace Run00.VersioningRoslyn.IntegrationTest
 			var changes = VersionCompare.Compare(controlGroup, testGroup);
 			var result = VersionCalculator.Calculate(changes.First());
 
+			result.OriginalComp.Name.ToString();
+
 			Assert.AreEqual(ContractChangeType.Refactor, result.Justification.ChangeType);
 			Assert.AreEqual("1.0.1.0", result.Suggested.ToString());
 		}
