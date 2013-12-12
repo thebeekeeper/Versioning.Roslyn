@@ -53,7 +53,13 @@ namespace Run00.VersioningRoslyn
 
 		string IContractItem.Name
 		{
-			get { return _compilation.GlobalNamespace.Name; }
+			get 
+			{
+				var name = _compilation.GlobalNamespace.Name;
+				if (string.IsNullOrWhiteSpace(name))
+					name = _compilation.Assembly.BaseName;
+				return name;
+			}
 		}
 
 		bool IContractItem.IsMatchedWith(IContractItem item)
