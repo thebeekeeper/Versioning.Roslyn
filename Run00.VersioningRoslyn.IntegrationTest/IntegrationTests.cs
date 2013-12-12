@@ -220,5 +220,20 @@ namespace Run00.VersioningRoslyn.IntegrationTest
 			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
 			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
 		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenAttributeRemoved_ShouldBeBreaking()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"AttributeRemove\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
+			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
+		}
 	}
 }
