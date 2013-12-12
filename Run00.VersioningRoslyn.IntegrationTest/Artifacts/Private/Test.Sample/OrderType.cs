@@ -8,7 +8,7 @@ namespace Run00.TestSample
 {
 	public enum OrderType
 	{
-		NewOrder,
-		UpdatedOrder
+		New,
+		Updated
 	};
 }
