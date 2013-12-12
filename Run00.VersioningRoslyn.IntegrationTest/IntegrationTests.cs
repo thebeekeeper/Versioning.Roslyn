@@ -51,6 +51,19 @@ namespace Run00.VersioningRoslyn.IntegrationTest
 		}
 
 		[TestMethod, CategorizeByConvention]
+		public void WhenMethodIsRemoved_ShouldBeBreaking()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"MethodDeleted\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
+			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
+		}
+
+		[TestMethod, CategorizeByConvention]
 		public void WhenClassIsAdded_ShouldBeEnhancement()
 		{
 			//Arrange
@@ -131,6 +144,81 @@ namespace Run00.VersioningRoslyn.IntegrationTest
 			var contents = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @"ChangeVersion\Test.Sample\Properties\AssemblyInfo.cs"));
 			Assert.AreNotEqual(-1, contents.IndexOf("[assembly: AssemblyVersion(\"2.0.0.0\")]"));
 			Assert.AreNotEqual(-1, contents.IndexOf("[assembly: AssemblyFileVersion(\"2.0.0.0\")]"));
+		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenSameSolution_ShouldBeNone()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.None, result.Justification.ChangeType);
+			Assert.AreEqual("1.0.0.0", result.Suggested.ToString());
+		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenEnumItemAdded_ShouldBeEnhancement()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"EnumAdd\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.Enhancement, result.Justification.ChangeType);
+			Assert.AreEqual("1.1.0.0", result.Suggested.ToString());
+		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenEnumItemRemoved_ShouldBeBreaking()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"EnumRemove\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
+			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
+		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenEnumItemNameChanged_ShouldBeBreaking()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"EnumRename\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
+			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
+		}
+
+		[TestMethod, CategorizeByConvention]
+		public void WhenReturnTypeChanged_ShouldBeBreaking()
+		{
+			//Arrange
+			var controlGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ControlGroup\Test.Sample.sln"));
+			var testGroup = RoslynSolution.Load(Path.Combine(Directory.GetCurrentDirectory(), @"ReturnTypeChange\Test.Sample.sln"));
+			var changes = VersionCompare.Compare(controlGroup, testGroup);
+			var result = VersionCalculator.Calculate(changes.First());
+
+			result.OriginalComp.Name.ToString();
+
+			Assert.AreEqual(ContractChangeType.Breaking, result.Justification.ChangeType);
+			Assert.AreEqual("2.0.0.0", result.Suggested.ToString());
 		}
 	}
 }

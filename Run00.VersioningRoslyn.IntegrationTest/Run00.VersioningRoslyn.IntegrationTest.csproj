@@ -84,6 +84,16 @@
     <Content Include="Artifacts\Adding\Test.Sample\Test.Sample.csproj" />
     <Content Include="Artifacts\ChangeVersion\Test.Sample.sln" />
     <Content Include="Artifacts\ChangeVersion\Test.Sample\Test.Sample.csproj" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample.sln" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\Test.Sample.csproj" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample.sln" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\Test.Sample.csproj" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample.sln" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\Test.Sample.csproj" />
+    <Content Include="Artifacts\EnumRename\Test.Sample.sln" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\Test.Sample.csproj" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample.sln" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\Test.Sample.csproj" />
     <Content Include="Artifacts\Private\Test.Sample.sln" />
     <Content Include="Artifacts\Private\Test.Sample\Test.Sample.csproj" />
     <Content Include="Artifacts\Generic\Test.Sample.sln" />
@@ -128,6 +138,46 @@
     <Content Include="Artifacts\Private\Test.Sample\Order.cs" />
     <Content Include="Artifacts\Private\Test.Sample\OrderService.cs" />
     <Content Include="Artifacts\Private\Test.Sample\Properties\AssemblyInfo.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\IOrderService.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\LineItem.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\Order.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\OrderService.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\Properties\AssemblyInfo.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\IOrderService.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\LineItem.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\Order.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\OrderService.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\Properties\AssemblyInfo.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\IOrderService.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\LineItem.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\Order.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\OrderService.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\Properties\AssemblyInfo.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\IOrderService.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\LineItem.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\Order.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\OrderService.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\Properties\AssemblyInfo.cs" />
+    <Content Include="Artifacts\Adding\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\ChangeVersion\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Comments\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\ControlGroup\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Deleted\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\EnumAdd\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\EnumRemove\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\EnumRename\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Generic\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\MethodDeleted\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Modifying\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Namespace\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Private\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\Refactor\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\IOrderService.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\LineItem.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\Order.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\OrderService.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\OrderType.cs" />
+    <Content Include="Artifacts\ReturnTypeChange\Test.Sample\Properties\AssemblyInfo.cs" />
     <Compile Include="RoslynReferenceHack.cs" />
     <Content Include="Artifacts\Comments\Test.Sample\IOrderService.cs" />
     <Content Include="Artifacts\Comments\Test.Sample\LineItem.cs" />
@@ -194,7 +244,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+	   Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
